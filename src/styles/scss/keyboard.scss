@@ -1,0 +1,29 @@
+.keyboard {
+  display: grid;
+  grid-template-areas:
+    "top top top top"
+    "left left left right";
+  column-gap: 20px;
+  row-gap: 20px;
+}
+
+.keyboard__top {
+  grid-area: top;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  display: grid;
+  column-gap: 20px;
+}
+
+.keyboard__left {
+  grid-area: left;
+  grid-template-columns: 1fr 1fr 1fr;
+  display: grid;
+  column-gap: 20px;
+  row-gap: 16px;
+}
+
+.keyboard__right {
+  display: flex;
+  flex-direction: column;
+  row-gap: 16px;
+}

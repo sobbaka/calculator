@@ -1,0 +1,36 @@
+.btn {
+  min-width: 62px;
+  min-height: 62px;
+  border-radius: 16px;
+  font-size: 32px;
+  cursor: pointer;
+  border: none;
+}
+
+.btn__zero {
+  grid-column: 1 / 3;
+}
+
+.btn_big_vertival {
+  height: 101px;
+}
+
+.btn_grey {
+  background-color: $color-dark-grey;
+  color: $color-light-grey;
+}
+
+.btn_black {
+  background-color: $color-light-black;
+  color: $color-blue;
+}
+
+.btn_blue {
+  background-color: $color-dark-blue;
+  color: $color-blue;
+}
+
+.btn__equal {
+  background-color: $color-light-blue;
+  color: $color-cyan;
+}
