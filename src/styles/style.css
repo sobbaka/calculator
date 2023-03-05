@@ -1,3 +1,5 @@
+@import "./fonts/font.css";
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap");
 .btn {
   min-width: 62px;
   min-height: 62px;
@@ -5,6 +7,8 @@
   font-size: 32px;
   border: none;
   cursor: pointer;
+  font-family: "Poppins";
+  font-weight: 500;
 }
 
 .btn:hover {

@@ -1,8 +1,11 @@
+@import "./fonts/font.css";
 @import "./variables.scss";
 @import "./btn.scss";
 @import "./calc.scss";
 @import "./keyboard.scss";
 @import "./screen.scss";
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap");
 
 * {
   box-sizing: border-box;
