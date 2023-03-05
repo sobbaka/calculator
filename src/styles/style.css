@@ -3,8 +3,16 @@
   min-height: 62px;
   border-radius: 16px;
   font-size: 32px;
-  cursor: pointer;
   border: none;
+  cursor: pointer;
+}
+
+.btn:hover {
+  box-shadow: 1px 1px 3px 3px rgba(82, 82, 82, 0.47);
+}
+
+.btn:active {
+  box-shadow: 3px 1px 9px 5px rgba(82, 82, 82, 0.47);
 }
 
 .btn__zero {
