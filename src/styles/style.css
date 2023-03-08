@@ -1,3 +1,5 @@
+@import "./fonts/font.css";
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap");
 .btn {
   min-width: 62px;
   min-height: 62px;
@@ -5,7 +7,7 @@
   font-size: 32px;
   border: none;
   cursor: pointer;
-  font-family: "Poppins";
+  font-family: "Poppins", sans-serif;
   font-weight: 500;
 }
 
@@ -67,7 +69,7 @@
 
 .keyboard {
   display: grid;
-  grid-template-areas: "top top top top""left left left right";
+  grid-template-areas: "top top top top" "left left left right";
   column-gap: 20px;
   row-gap: 20px;
 }
@@ -95,10 +97,20 @@
 
 .screen__input {
   height: 36px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-size: 24px;
+  color: #fff;
+  text-align: right;
 }
 
 .screen__result {
   height: 72px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-size: 48px;
+  color: #fff;
+  text-align: right;
 }
 
 * {

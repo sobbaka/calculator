@@ -1,7 +1,17 @@
 .screen__input {
   height: 36px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-size: 24px;
+  color: $color-white;
+  text-align: right;
 }
 
 .screen__result {
   height: 72px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-size: 48px;
+  color: $color-white;
+  text-align: right;
 }
