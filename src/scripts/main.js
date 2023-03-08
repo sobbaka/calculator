@@ -20,6 +20,7 @@ for (const btn of btnList) {
       if (operation) equal();
       operation = btn.value;
       switcher = true;
+      inputDisplay(btn.value);
     }
 
     if (actions.includes(btn.value)) {
@@ -45,15 +46,41 @@ for (const btn of btnList) {
       if (switcher) {
         secondNum = createNum(secondNum, btn.value);
         console.log(`secondNum ${secondNum}`);
+        inputDisplay(btn.value);
       } else {
         firstNum = createNum(firstNum, btn.value);
         console.log(`fisrtnum ${firstNum}`);
+        inputDisplay(btn.value);
       }
     }
     if (btn.value === "equal") {
       equal();
+      screenResult.innerHTML = "= " + result;
     }
   })
+}
+
+const inputDisplay = (value) => {
+  switch (value) {
+    case "plus":
+      screenInput.innerHTML = screenInput.innerHTML + " + ";
+      break;
+    case "minus":
+      screenInput.innerHTML = screenInput.innerHTML + " - ";
+      break;
+    case "multiple":
+      screenInput.innerHTML = screenInput.innerHTML + " X ";
+      break;
+    case "division":
+      screenInput.innerHTML = screenInput.innerHTML + " / ";
+      break;
+    case "dot":
+      screenInput.innerHTML = screenInput.innerHTML + ".";
+      break;
+    default:
+      screenInput.innerHTML = screenInput.innerHTML == "0" ? value : screenInput.innerHTML + value;
+      break;
+  }
 }
 
 
@@ -102,6 +129,9 @@ const reset = () => {
   secondNum = null;
   operation = null;
   switcher = false;
+
+  screenInput.innerHTML = firstNum;
+  screenResult.innerHTML = "";
 }
 
 const del = (number) => {
