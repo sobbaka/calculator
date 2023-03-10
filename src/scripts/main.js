@@ -55,7 +55,7 @@ for (const btn of btnList) {
     }
     if (btn.value === "equal") {
       equal();
-      screenResult.innerHTML = "= " + result;
+
     }
   })
 }
@@ -90,7 +90,8 @@ const equal = () => {
   firstNum = result;
   secondNum = null;
   operation = null;
-  console.log(result)
+  console.log(result);
+  screenResult.innerHTML = "= " + result;
 }
 
 
