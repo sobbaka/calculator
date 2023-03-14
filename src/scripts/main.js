@@ -31,7 +31,6 @@ for (const btn of btnList) {
           reset();
         case "del":
           console.log('del')
-          // screenDel();
           switch (switcher) {
             case true:
               secondNum = secondNum ? del(secondNum) : setResult();
@@ -84,10 +83,9 @@ const textToSign = (operation) => {
 
 const equal = () => {
   console.log(`fisrtnum ${firstNum}; secondNum ${secondNum}`);
+
   result = (operation && secondNum) ? action(operation, firstNum, secondNum) : firstNum;
-
   result = `${result}`.length > 8 ? result.toExponential(2) : result;
-
   firstNum = result;
   secondNum = null;
   operation = null;
@@ -143,14 +141,13 @@ const setResult = () => {
 }
 
 
-
 const del = (number) => {
-  number = number.length > 1 ? number.slice(0, -1) : 0;
+  number = `${number}`.length > 1 ? `${number}`.slice(0, -1) : 0;
   return number;
 }
 
 
-const screenDel = () => {
-  console.log(screenInput.innerHTML === "0")
-  screenInput.innerHTML = (screenInput.innerHTML === "0") ? screenInput.innerHTML : screenInput.innerHTML.slice(0, -1);
-}
+// const screenDel = () => {
+//   console.log(screenInput.innerHTML === "0")
+//   screenInput.innerHTML = (screenInput.innerHTML === "0") ? screenInput.innerHTML : screenInput.innerHTML.slice(0, -1);
+// }
