@@ -12,6 +12,8 @@ const btnList = Array.from(document.querySelectorAll(".btn"));
 const operations = ["division", "multiple", "minus", "plus"];
 const actions = ["reset", "del"];
 
+screenInput.innerHTML = firstNum;
+
 
 for (const btn of btnList) {
   btn.addEventListener("click", function () {
@@ -20,7 +22,7 @@ for (const btn of btnList) {
       if (operation) equal();
       operation = btn.value;
       switcher = true;
-      inputDisplay(btn.value);
+      inputDisplay();
     }
 
     if (actions.includes(btn.value)) {
@@ -29,14 +31,15 @@ for (const btn of btnList) {
           reset();
         case "del":
           console.log('del')
+          // screenDel();
           switch (switcher) {
             case true:
-              secondNum = del(secondNum);
-              console.log(`secondNum ${secondNum}`)
+              secondNum = secondNum ? del(secondNum) : setResult();
+              inputDisplay();
               break;
             case false:
               firstNum = del(firstNum);
-              console.log(`fisrtnum ${firstNum}`)
+              inputDisplay();
               break;
           }
       }
@@ -46,11 +49,11 @@ for (const btn of btnList) {
       if (switcher) {
         secondNum = createNum(secondNum, btn.value);
         console.log(`secondNum ${secondNum}`);
-        inputDisplay(btn.value);
+        inputDisplay(switcher, btn.value);
       } else {
         firstNum = createNum(firstNum, btn.value);
         console.log(`fisrtnum ${firstNum}`);
-        inputDisplay(btn.value);
+        inputDisplay(switcher, btn.value);
       }
     }
     if (btn.value === "equal") {
@@ -60,33 +63,31 @@ for (const btn of btnList) {
   })
 }
 
-const inputDisplay = (value) => {
-  switch (value) {
-    case "plus":
-      screenInput.innerHTML = screenInput.innerHTML + " + ";
-      break;
-    case "minus":
-      screenInput.innerHTML = screenInput.innerHTML + " - ";
-      break;
-    case "multiple":
-      screenInput.innerHTML = screenInput.innerHTML + " X ";
-      break;
-    case "division":
-      screenInput.innerHTML = screenInput.innerHTML + " / ";
-      break;
-    case "dot":
-      screenInput.innerHTML = screenInput.innerHTML + ".";
-      break;
-    default:
-      screenInput.innerHTML = screenInput.innerHTML == "0" ? value : screenInput.innerHTML + value;
-      break;
-  }
+const inputDisplay = () => {
+  const secondNumHTML = secondNum ? secondNum : '';
+  const operationHTML = operation ? textToSign(operation) : '';
+  screenInput.innerHTML = `${firstNum}${operationHTML}${secondNumHTML}`
 }
 
+const textToSign = (operation) => {
+  switch (operation) {
+    case "plus":
+      return " + ";
+    case "minus":
+      return  " - ";
+    case "multiple":
+      return  " X ";
+    case "division":
+      return " / ";
+  }
+}
 
 const equal = () => {
   console.log(`fisrtnum ${firstNum}; secondNum ${secondNum}`);
   result = (operation && secondNum) ? action(operation, firstNum, secondNum) : firstNum;
+
+  result = `${result}`.length > 8 ? result.toExponential(2) : result;
+
   firstNum = result;
   secondNum = null;
   operation = null;
@@ -106,7 +107,6 @@ const action = (operation, numOne, numTwo) => {
     case "division":
       return parseFloat(numOne) / parseFloat(numTwo);
   }
-
 }
 
 const createNum = (number, value) => {
@@ -130,12 +130,27 @@ const reset = () => {
   secondNum = null;
   operation = null;
   switcher = false;
-
   screenInput.innerHTML = firstNum;
   screenResult.innerHTML = "";
 }
 
+const setResult = () => {
+  secondNum = null;
+  operation = null;
+  switcher = false;
+  screenInput.innerHTML = firstNum;
+  screenResult.innerHTML = "";
+}
+
+
+
 const del = (number) => {
   number = number.length > 1 ? number.slice(0, -1) : 0;
   return number;
+}
+
+
+const screenDel = () => {
+  console.log(screenInput.innerHTML === "0")
+  screenInput.innerHTML = (screenInput.innerHTML === "0") ? screenInput.innerHTML : screenInput.innerHTML.slice(0, -1);
 }
