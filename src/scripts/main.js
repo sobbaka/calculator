@@ -69,16 +69,22 @@ const inputDisplay = () => {
 
 
 const textToSign = (operation) => {
+  let sign;
   switch (operation) {
     case "plus":
-      return " + ";
+      sign = " + ";
+      break;
     case "minus":
-      return " - ";
+      sign = " - ";
+      break;
     case "multiple":
-      return " X ";
+      sign = " × ";
+      break;
     case "division":
-      return " / ";
+      sign = " ÷ ";
+      break;
   }
+  return `<span class="screen__text_state_blue"> ${sign} </span>`
 }
 
 
@@ -141,11 +147,6 @@ const reset = () => {
   if (screenResult.classList.contains("screen__input_state_zero-division")) screenResult.classList.remove("screen__input_state_zero-division");
   firstNum = "0";
   setResult();
-  secondNum = null;
-  operation = null;
-  switcher = false;
-  screenInput.innerHTML = firstNum;
-  screenResult.innerHTML = "";
 }
 
 
