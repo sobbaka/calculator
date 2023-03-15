@@ -104,6 +104,11 @@
   text-align: right;
 }
 
+.screen__text_state_blue {
+  color: #005db2;
+  font-weight: bold;
+}
+
 .screen__result {
   height: 72px;
   font-family: "Poppins", sans-serif;
