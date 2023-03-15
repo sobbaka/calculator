@@ -15,3 +15,11 @@
   color: $color-white;
   text-align: right;
 }
+
+.screen__input_state_zero-division {
+  font-size: 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+}

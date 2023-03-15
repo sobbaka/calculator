@@ -15,12 +15,12 @@ const actions = ["reset", "del"];
 
 screenInput.innerHTML = firstNum;
 
-
 for (const btn of btnList) {
   btn.addEventListener("click", function () {
 
     if (zeroDivision) {
-      reset(); zeroDivision = false;
+      reset();
+      zeroDivision = false;
     }
 
     if (operations.includes(btn.value)) {
@@ -53,15 +53,17 @@ for (const btn of btnList) {
       }
     }
     inputDisplay();
+
     if (btn.value === "equal") {
       equal();
     }
   })
 }
 
+
 const inputDisplay = () => {
-  const secondNumHTML = secondNum ? secondNum : '';
-  const operationHTML = operation ? textToSign(operation) : '';
+  const secondNumHTML = secondNum ? secondNum : "";
+  const operationHTML = operation ? textToSign(operation) : "";
   screenInput.innerHTML = `${firstNum}${operationHTML}${secondNumHTML}`
 }
 
@@ -79,6 +81,7 @@ const textToSign = (operation) => {
   }
 }
 
+
 const equal = () => {
   zeroDivision = checkZeroDivision(operation, secondNum);
   if (!zeroDivision) {
@@ -91,6 +94,7 @@ const equal = () => {
     screenResult.innerHTML = "= " + result;
   }
 }
+
 
 const action = (operation, numOne, numTwo) => {
   switch (operation) {
@@ -122,22 +126,28 @@ const createNum = (number, value) => {
   return number;
 }
 
+
 const checkZeroDivision = (operation, secondNum) => {
   if (secondNum == "0" && operation === "division") {
+    screenResult.classList.add("screen__input_state_zero-division");
     screenResult.innerHTML = "На ноль делить нельзя";
     return true;
   };
   return false;
 }
 
+
 const reset = () => {
+  if (screenResult.classList.contains("screen__input_state_zero-division")) screenResult.classList.remove("screen__input_state_zero-division");
   firstNum = "0";
+  setResult();
   secondNum = null;
   operation = null;
   switcher = false;
   screenInput.innerHTML = firstNum;
   screenResult.innerHTML = "";
 }
+
 
 const setResult = () => {
   secondNum = null;
@@ -146,6 +156,7 @@ const setResult = () => {
   screenInput.innerHTML = firstNum;
   screenResult.innerHTML = "";
 }
+
 
 const del = (number) => {
   number = `${number}`.length > 1 ? `${number}`.slice(0, -1) : 0;
