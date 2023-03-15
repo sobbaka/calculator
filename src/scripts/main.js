@@ -3,6 +3,7 @@ let secondNum = null;
 let result = null;
 let operation = null;
 let switcher = false;
+let zeroDivision = false;
 const regex = /[0-9]|dot/
 
 const screenInput = document.querySelector(".screen__input");
@@ -18,11 +19,14 @@ screenInput.innerHTML = firstNum;
 for (const btn of btnList) {
   btn.addEventListener("click", function () {
 
+    if (zeroDivision) {
+      reset(); zeroDivision = false;
+    }
+
     if (operations.includes(btn.value)) {
       if (operation) equal();
       operation = btn.value;
       switcher = true;
-      inputDisplay();
     }
 
     if (actions.includes(btn.value)) {
@@ -30,15 +34,12 @@ for (const btn of btnList) {
         case "reset":
           reset();
         case "del":
-          console.log('del')
           switch (switcher) {
             case true:
               secondNum = secondNum ? del(secondNum) : setResult();
-              inputDisplay();
               break;
             case false:
               firstNum = del(firstNum);
-              inputDisplay();
               break;
           }
       }
@@ -47,17 +48,13 @@ for (const btn of btnList) {
     if (regex.test(btn.value)) {
       if (switcher) {
         secondNum = createNum(secondNum, btn.value);
-        console.log(`secondNum ${secondNum}`);
-        inputDisplay(switcher, btn.value);
       } else {
         firstNum = createNum(firstNum, btn.value);
-        console.log(`fisrtnum ${firstNum}`);
-        inputDisplay(switcher, btn.value);
       }
     }
+    inputDisplay();
     if (btn.value === "equal") {
       equal();
-
     }
   })
 }
@@ -68,31 +65,32 @@ const inputDisplay = () => {
   screenInput.innerHTML = `${firstNum}${operationHTML}${secondNumHTML}`
 }
 
+
 const textToSign = (operation) => {
   switch (operation) {
     case "plus":
       return " + ";
     case "minus":
-      return  " - ";
+      return " - ";
     case "multiple":
-      return  " X ";
+      return " X ";
     case "division":
       return " / ";
   }
 }
 
 const equal = () => {
-  console.log(`fisrtnum ${firstNum}; secondNum ${secondNum}`);
-
-  result = (operation && secondNum) ? action(operation, firstNum, secondNum) : firstNum;
-  result = `${result}`.length > 8 ? result.toExponential(2) : result;
-  firstNum = result;
-  secondNum = null;
-  operation = null;
-  console.log(result);
-  screenResult.innerHTML = "= " + result;
+  zeroDivision = checkZeroDivision(operation, secondNum);
+  if (!zeroDivision) {
+    result = (operation && secondNum) ? action(operation, firstNum, secondNum) : firstNum;
+    result = `${result}`.length > 8 ? result.toExponential(2) : result;
+    firstNum = result;
+    secondNum = null;
+    operation = null;
+    console.log(result);
+    screenResult.innerHTML = "= " + result;
+  }
 }
-
 
 const action = (operation, numOne, numTwo) => {
   switch (operation) {
@@ -107,6 +105,7 @@ const action = (operation, numOne, numTwo) => {
   }
 }
 
+
 const createNum = (number, value) => {
   number = number ? number : "0";
   switch (value) {
@@ -116,11 +115,19 @@ const createNum = (number, value) => {
     case "dot":
       number = (!number.includes(".")) ? number + "." : number;
       break;
-    default: // regex ??
+    default:
       number = (number == "0") ? String(value) : number + String(value);
       break;
   }
   return number;
+}
+
+const checkZeroDivision = (operation, secondNum) => {
+  if (secondNum == "0" && operation === "division") {
+    screenResult.innerHTML = "На ноль делить нельзя";
+    return true;
+  };
+  return false;
 }
 
 const reset = () => {
@@ -140,14 +147,7 @@ const setResult = () => {
   screenResult.innerHTML = "";
 }
 
-
 const del = (number) => {
   number = `${number}`.length > 1 ? `${number}`.slice(0, -1) : 0;
   return number;
 }
-
-
-// const screenDel = () => {
-//   console.log(screenInput.innerHTML === "0")
-//   screenInput.innerHTML = (screenInput.innerHTML === "0") ? screenInput.innerHTML : screenInput.innerHTML.slice(0, -1);
-// }
