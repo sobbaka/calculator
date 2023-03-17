@@ -27,17 +27,17 @@
   height: 101px;
 }
 
-.btn_grey {
+.btn__remove {
   background-color: #616161;
   color: #a5a5a5;
 }
 
-.btn_black {
+.btn__number {
   background-color: #303136;
   color: #29a8ff;
 }
 
-.btn_blue {
+.btn__operation {
   background-color: #005db2;
   color: #29a8ff;
 }
@@ -100,12 +100,10 @@
   font-family: "Poppins", sans-serif;
   font-weight: 400;
   font-size: 24px;
-  color: #fff;
   text-align: right;
 }
 
 .screen__text_state_blue {
-  color: #005db2;
   font-weight: bold;
 }
 
@@ -114,7 +112,6 @@
   font-family: "Poppins", sans-serif;
   font-weight: 500;
   font-size: 48px;
-  color: #fff;
   text-align: right;
 }
 
@@ -131,7 +128,6 @@
 }
 
 .body {
-  background-color: #a0d7ff;
   display: flex;
   justify-content: center;
   margin-top: 150px;

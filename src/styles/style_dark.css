@@ -1,0 +1,49 @@
+.btn:hover {
+  box-shadow: 1px 1px 3px 3px rgba(82, 82, 82, 0.47);
+}
+
+.btn:active {
+  box-shadow: 3px 1px 9px 5px rgba(82, 82, 82, 0.47);
+}
+
+.btn__remove {
+  background-color: #616161;
+  color: #a5a5a5;
+}
+
+.btn__number {
+  background-color: #303136;
+  color: #29a8ff;
+}
+
+.btn__operation {
+  background-color: #005db2;
+  color: #29a8ff;
+}
+
+.btn__equal {
+  background-color: #1991ff;
+  color: #b2daff;
+}
+
+.calc {
+  background: linear-gradient(191.34deg, rgb(23, 24, 26) -4.95%, rgb(23, 24, 26) 103.74%);
+}
+
+.screen__input {
+  color: #fff;
+}
+
+.screen__text_state_blue {
+  color: #005db2;
+}
+
+.screen__result {
+  color: #fff;
+}
+
+.body {
+  background-color: #a0d7ff;
+}
+
+/*# sourceMappingURL=style_dark.css.map */

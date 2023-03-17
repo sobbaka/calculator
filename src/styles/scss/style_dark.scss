@@ -1,0 +1,8 @@
+@import "./variables.scss";
+@import "./dark/btn_theme_dark.scss";
+@import "./dark/calc_theme_dark.scss";
+@import "./dark/screen_theme_dark.scss";
+
+.body {
+  background-color: $color-bg-body;
+}
