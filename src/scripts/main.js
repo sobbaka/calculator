@@ -46,7 +46,7 @@ for (const btn of btnList) {
     };
 
     if (regex.test(btn.value)) {
-      if (switcher) {
+      if (switcher&&operation) {
         secondNum = createNum(secondNum, btn.value);
       } else {
         firstNum = createNum(firstNum, btn.value);
@@ -96,7 +96,6 @@ const equal = () => {
     firstNum = result;
     secondNum = null;
     operation = null;
-    console.log(result);
     screenResult.innerHTML = "= " + result;
   }
 }
