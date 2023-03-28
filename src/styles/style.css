@@ -133,4 +133,19 @@
   margin-top: 150px;
 }
 
+.wrapper {
+  position: relative;
+}
+
+.circle {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background-color: #38b9ff;
+  top: 173px;
+  left: -263px;
+  z-index: -1;
+}
+
 /*# sourceMappingURL=style.css.map */

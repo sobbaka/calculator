@@ -12,8 +12,22 @@
 }
 
 .body {
-  //background-color: $color-bg-body;
   display: flex;
   justify-content: center;
   margin-top: 150px;
+}
+
+.wrapper {
+  position: relative;
+}
+
+.circle {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background-color: $color-blue-light;
+  top: 173px;
+  left: -263px;
+  z-index: -1;
 }
