@@ -8,12 +8,23 @@
   <title>Calculator</title>
   <link rel="icon" type="image/x-icon" href="./src/images/calc.ico">
   <link rel="stylesheet" href="./src/styles/style.css">
-  <link rel="stylesheet" href="./src/styles/style_light.css">
+  <link rel="stylesheet" href="./src/styles/style_light.css" data="theme">
 
 </head>
 
 <body class="body">
+
+
+
   <div class="wrapper">
+    <div class="switcher-wrapper">
+      <input type="checkbox" id="themeSwitch" name="theme-switch" class="theme-switch__input" />
+      <label for="themeSwitch" class="theme-switch__label">
+        <span>Switch theme</span>
+      </label>
+    </div>
+
+
     <div class="circle"></div>
     <div class="calc">
       <div class="calc__screen screen">
@@ -50,6 +61,7 @@
     </div>
   </div>
   <script src="./src/scripts/main.js"></script>
+  <script src="./src/scripts/switcher.js"></script>
 </body>
 
 </html>
